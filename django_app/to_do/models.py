@@ -15,7 +15,7 @@ from django.db import models
     # クラスでコンストラクタを使用する場合は "def __init__(self,strA, str,B,...):"　を使う
 class Todo(models.Model):
     title = models.CharField(max_length=140, blank=False)
-    created_at = models.DataTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
     def __str__(self):
