@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'to_do', #to_doアプリケーションの追加
+    'rest_framework', # REST Framworkの読み込み
 ]
 
 MIDDLEWARE = [
