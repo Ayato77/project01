@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ToDo';
-  subtitle = 'Angular2 + Django Rest Framework'
+  subtitle = 'Angular9 + Django Rest Framework'
 }
+
