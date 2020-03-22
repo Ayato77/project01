@@ -15,30 +15,18 @@ export class TodoService {
     private http: HttpClient
   ) {
   }
-
+  //全てのtodoを渡す
   getAllTodo(): Observable<any> {
     return this.http.get(this.host, {headers: this.headers});
   }
 
-  // 全てのtodoをGETする
-  /*getAllTodo(): Promise<Todo[]> {
-    return this.http
-      .get(this.host, this.httpOptions)
-      .toPromise()
-      .then((res) => {
-      // response の型は any ではなく class で型を定義した方が良いが
-      // ここでは簡便さから any としておく
-
-      // @angular/http では json() でパースする必要があったが､ @angular/common/http では不要となった
-      //const response: any = res.json();
-      const response: any = res;
-      return response;
-      })
-      .catch(this.errorHandler);
+  //新しいtodoを追加する
+  create(todo: Todo): Observable<any>{
+    return this.http.post(this.host, JSON.stringify(todo),{headers: this.headers});
   }
-
-  private errorHandler(err) {
-    console.log('Error occured.', err);
-    return Promise.reject(err.message || err);
-  }*/
+  //追加された最新のtodoを一件取得
+  getNewTodo(): Observable<any>{
+    return this.http
+      .get(this.host+"?limit=1");
+  }
 }
