@@ -1,12 +1,12 @@
-<div class=""container>
-  <div class="todo-list row">
-    <div *ngFor="let todo of todos" class="col-sm-8 col-sm-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <span from="name">{{todo.title}}</span>
+
+<div class="container">
+    <div class="todo-list row">
+      <div *ngFor="let todo of todos" class="col-sm-8 col-sm-offset-2">
+         <div class="card">
+            <div class="card-body">
+              <span from="name">{{todo.title}}</span>
+            </div>
         </div>
       </div>
     </div>
-
-  </div>
-</div>>
+</div>
