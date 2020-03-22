@@ -1,5 +1,30 @@
 
 <div class="container">
+  <div class="center">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <input [(ngModel)]="todo.title"
+          id="input_text"
+          type="text"
+          length="140"
+          class="form-control add-todo"
+          placeholder="add-todo"
+          (keydown.enter)="save()"
+        >
+        <button (click)="save()" class="btn btn-success pull-right add-todo">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="newtodo-list row" style="margin-top:10px;">
+    <div *ngFor="let newtodo of newtodos" class="col-sm-8 col-sm-offset-2">
+        <div class="card">
+          <div class="card-body">
+            <span from="name">{{newtodo[0].title}}</span>
+          </div>
+        </div>
+    </div>
+  </div>
+  <hr class="col-sm-8 col-sm-offset-2">
     <div class="todo-list row">
       <div *ngFor="let todo of todos" class="col-sm-8 col-sm-offset-2">
          <div class="card">
