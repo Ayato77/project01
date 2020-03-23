@@ -23,12 +23,12 @@
             <span from="name">{{newtodo[0].title}}</span>
             <button (click)="delete(newtodo[0].id)"
                 type="button"
-                class="btn btn-success btn-circle pull-right"
+                class="btn btn-default pull-right deletebtn"
               >
-                <i class="glyphicon glyphicon-ok"></i>
+                <i class="fa fa-trash "></i>
             </button>
+          </div>
 
-        </div>
       </div>
     </div>
   </div>
@@ -38,13 +38,28 @@
 
          <div class="card">
             <div class="card-body">
-              <span from="name">{{todo.title}}</span>
+              <span *ngIf="!isEdit" (click)="isEdit=true" from="name">{{todo.title}}</span>
+              <input *ngIf="isEdit"
+                (focusout)="isEdit=false; update(todo.id, todo.title)"
+                [(ngModel)]="todo.title"
+                id="input_text"
+                type="text"
+                length="140"
+                style="border:none; width:70%"
+              >
               <button (click)="delete(todo.id)"
                 type="button"
-                class="btn btn-success
-                btn-circle pull-right"
+                class="btn btn-default
+                pull-right deletebtn"
               >
-                <i class="glyphicon glyphicon-ok"></i>
+                <i class="fa fa-trash "></i>
+              </button>
+              <!-- todoのチェックをいれる用のボタン　-->
+              <button
+                type="button"
+                class="btn btn-success btn-circle
+                pull-right deletebtn"
+              >
               </button>
 
            </div>

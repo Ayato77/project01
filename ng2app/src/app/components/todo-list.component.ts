@@ -15,6 +15,8 @@ export class TodoListComponent implements OnInit{
   todos: Todo[] = [];
   newtodos: Todo[] = [];
   @Input() todo: Todo = new Todo();
+  @Input() isEdit = false;
+  @Input() hideElement = false;
 
   constructor(
     private todoService: TodoService,
@@ -46,6 +48,16 @@ export class TodoListComponent implements OnInit{
   // 削除ボタンの動作
   delete(id): void{
     this.todoService
-      .delete(id);
+      .delete(id)
+      .subscribe();//subscribe()を呼ばないとdeleteが実行されない
+  }
+
+  // todoを更新した時の動作
+  update(id: number, title: string): void {
+    let todo = {
+      id: id,
+      title: title
+    }
+    this.todoService.updateTodo(todo).subscribe();
   }
 }

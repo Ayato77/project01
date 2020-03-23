@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Todo } from '../models/todo.model';
+import {catchError} from 'rxjs/operators';
 
 
 @Injectable()
@@ -30,9 +31,13 @@ export class TodoService {
       .get(this.host+"?limit=1");
   }
   //Todoの削除
-  delete(id: number): Observable<any>{
-    const url = '${this.host}${id}/';
+  delete(id: number): Observable<{}> {
+    const url = `${this.host}${id}/`;
     return this.http
       .delete(url, {headers: this.headers});
+  }
+
+  updateTodo(todo: Todo): Observable<any>{
+    return this.http.put(this.host, todo, {headers: this.headers});
   }
 }
