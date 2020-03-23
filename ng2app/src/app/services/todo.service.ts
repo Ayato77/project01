@@ -29,4 +29,10 @@ export class TodoService {
     return this.http
       .get(this.host+"?limit=1");
   }
+  //Todoの削除
+  delete(id: number): Observable<any>{
+    const url = '${this.host}${id}/';
+    return this.http
+      .delete(url, {headers: this.headers});
+  }
 }

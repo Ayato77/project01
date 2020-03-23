@@ -42,4 +42,10 @@ export class TodoListComponent implements OnInit{
   pushData(data: Todo): void{
     this.newtodos.unshift(data);
   }
+
+  // 削除ボタンの動作
+  delete(id): void{
+    this.todoService
+      .delete(id);
+  }
 }

@@ -17,20 +17,37 @@
   </div>
   <div class="newtodo-list row" style="margin-top:10px;">
     <div *ngFor="let newtodo of newtodos" class="col-sm-8 col-sm-offset-2">
+
         <div class="card">
           <div class="card-body">
             <span from="name">{{newtodo[0].title}}</span>
-          </div>
+            <button (click)="delete(newtodo[0].id)"
+                type="button"
+                class="btn btn-success btn-circle pull-right"
+              >
+                <i class="glyphicon glyphicon-ok"></i>
+            </button>
+
         </div>
+      </div>
     </div>
   </div>
   <hr class="col-sm-8 col-sm-offset-2">
     <div class="todo-list row">
       <div *ngFor="let todo of todos" class="col-sm-8 col-sm-offset-2">
+
          <div class="card">
             <div class="card-body">
               <span from="name">{{todo.title}}</span>
-            </div>
+              <button (click)="delete(todo.id)"
+                type="button"
+                class="btn btn-success
+                btn-circle pull-right"
+              >
+                <i class="glyphicon glyphicon-ok"></i>
+              </button>
+
+           </div>
         </div>
       </div>
     </div>
