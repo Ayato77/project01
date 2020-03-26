@@ -3,8 +3,9 @@
   <div class="center">
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2">
+        <!--入力フォームの内容とtodo.titleを同期-->
         <input [(ngModel)]="todo.title"
-          id="input_text"
+          id="input_text1"
           type="text"
           length="140"
           class="form-control add-todo"
@@ -15,39 +16,22 @@
       </div>
     </div>
   </div>
-  <div class="newtodo-list row" style="margin-top:10px;">
-    <div *ngFor="let newtodo of newtodos" class="col-sm-8 col-sm-offset-2">
-
-        <div class="card">
-          <div class="card-body">
-            <span from="name">{{newtodo[0].title}}</span>
-            <button (click)="delete(newtodo[0].id)"
-                type="button"
-                class="btn btn-default pull-right deletebtn"
-              >
-                <i class="fa fa-trash "></i>
-            </button>
-          </div>
-
-      </div>
-    </div>
-  </div>
   <hr class="col-sm-8 col-sm-offset-2">
     <div class="todo-list row">
-      <div *ngFor="let todo of todos" class="col-sm-8 col-sm-offset-2">
+      <div *ngFor="let todo of todos;let i=index;trackBy: myTrackBy" class="col-sm-8 col-sm-offset-2">
 
          <div class="card">
             <div class="card-body">
-              <span *ngIf="!isEdit" (click)="isEdit=true" from="name">{{todo.title}}</span>
+              <span *ngIf="!isEdit" (click)="isEdit=true">{{todos[i].title}}</span>
               <input *ngIf="isEdit"
-                (focusout)="isEdit=false; update(todo.id, todo.title)"
-                [(ngModel)]="todo.title"
+                (focusout)="isEdit=false; update(todos[i].id, todos[i].title)"
+                [(ngModel)]="todos[i].title"
                 id="input_text"
                 type="text"
                 length="140"
                 style="border:none; width:70%"
               >
-              <button (click)="delete(todo.id)"
+              <button (click)="delete(todos[i])"
                 type="button"
                 class="btn btn-default
                 pull-right deletebtn"
