@@ -18,3 +18,7 @@
 .add-todo {
   margin-top: 10px;
 }
+
+.deletebtn{
+  float: right;
+}
