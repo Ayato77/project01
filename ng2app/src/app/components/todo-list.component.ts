@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Router, ActivatedRoute, Params} from '@angular/router';
 
 import {TodoService} from '../services/todo.service';
 import { Todo } from '../models/todo.model';
@@ -11,45 +10,42 @@ import { Todo } from '../models/todo.model';
   styleUrls: ['../static/todo-list.component.css']
 })
 
-export class TodoListComponent implements OnInit{
+export class TodoListComponent implements OnInit {
   todos: Todo[] = [];
-  newtodos: Todo[] = [];
+  updatedtodos: Todo[];
   @Input() todo: Todo = new Todo();
   @Input() isEdit = false;
   @Input() hideElement = false;
 
   constructor(
     private todoService: TodoService,
-  ) { }
-
+  ) {
+  }
+//最初のイニシャライズ。ngOnChangeよりは後に呼び出される
   ngOnInit(): void {
-    this.todoService.getAllTodo().subscribe(todos => {this.todos = todos});
+    this.todoService.getAllTodo().subscribe(todos => {
+      this.todos = todos
+    });
   }
 
-  //保存ボタンを押した時
-  save(): void{
+  //保存ボタンを押した時に発火。無事に新しいtodoをpostできたら、返値をtodosの先頭に追加する。
+  save(): void {
     this.todoService
       .create(this.todo)
-      .subscribe(data => {this.getNewTodo()});
+      .subscribe(data => {
+        this.todos.unshift(data)
+      });
     this.todo = new Todo();
   }
-
-  //get one new todo
-  getNewTodo(): void {
-    this.todoService
-      .getNewTodo()
-      .subscribe(res =>{this.pushData(res)});
-  }
-
-  pushData(data: Todo): void{
-    this.newtodos.unshift(data);
-  }
-
   // 削除ボタンの動作
-  delete(id): void{
+  delete(data:Todo): void {
     this.todoService
-      .delete(id)
+      .delete(data.id)
       .subscribe();//subscribe()を呼ばないとdeleteが実行されない
+    this.updatedtodos=[];
+    this.updatedtodos = this.todos.filter(elm => {return elm !== data});
+    this.todos=[];
+    this.todos = this.updatedtodos.concat();
   }
 
   // todoを更新した時の動作
@@ -59,5 +55,9 @@ export class TodoListComponent implements OnInit{
       title: title
     }
     this.todoService.updateTodo(todo).subscribe();
+  }
+//TrackByを使って、*ngForで再度ロードされるhtmlを少なくする。
+  myTrackBy(index: number, obj: any): any {
+    return index;
   }
 }
