@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
 
-.title { color: #ee6e73;}
+.title {
+  font-family: 'Noto Serif JP', sans-serif;
+  color: #67c5ff;
+  font-weight: bold;
+
+}
 .sub-title { font-size: small; }

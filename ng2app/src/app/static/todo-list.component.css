@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+JP');
+
+*:focus {
+outline: none;
+}
+
+.todobox{
+  margin-right: auto;
+  margin-left : auto;
+}
+
 .todo-list {
   padding-top: 10px;
 }
@@ -19,6 +30,56 @@
   margin-top: 10px;
 }
 
+.addbtn{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  float: right;
+}
+
+.addbtn:hover {
+  background: #67c5ff;
+  color: white;
+}
+
 .deletebtn{
   float: right;
+}
+
+.offbt{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: darkgrey;
+  border: solid 2px darkgrey;
+  border-radius: 3px;
+  transition: .4s;
+  float: right;
+}
+
+.offbt:hover {
+  background: #67c5ff;
+  color: white;
+  border: solid 2px #67c5ff;
+}
+
+.onbt{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: white;
+  background: #67c5ff;
+  border: solid 2px #67c5ff;
+  border-radius: 3px;
+  transition: .4s;
+  float: right;
+}
+
+.todoText{
+  font-family: 'Noto Serif JP', sans-serif;
+  font-size: large;
 }

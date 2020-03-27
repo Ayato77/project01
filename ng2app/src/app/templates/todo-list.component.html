@@ -1,8 +1,9 @@
 
+<body>
 <div class="container">
   <div class="center">
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
+      <div class="col-sm-8 col-sm-offset-2 mx-auto">
         <!--入力フォームの内容とtodo.titleを同期-->
         <input [(ngModel)]="todo.title"
           id="input_text1"
@@ -12,19 +13,19 @@
           placeholder="add-todo"
           (keydown.enter)="save()"
         >
-        <button (click)="save()" class="btn btn-success pull-right add-todo">Add</button>
+        <button (click)="save()" class="btn pull-right addbtn">Add</button>
       </div>
     </div>
   </div>
   <hr class="col-sm-8 col-sm-offset-2">
-    <div class="todo-list row">
-      <div *ngFor="let todo of todos;let i=index;trackBy: myTrackBy" class="col-sm-8 col-sm-offset-2">
+    <div class="todo-list row ">
+      <div *ngFor="let todo of todos;let i=index;trackBy: myTrackBy" class="col-sm-8 col-sm-offset-2 mx-auto">
 
          <div class="card">
             <div class="card-body">
-              <span *ngIf="!isEdit" (click)="isEdit=true">{{todos[i].title}}</span>
+              <span *ngIf="!isEdit" (click)="isEdit=true" class="todoText">{{todos[i].title}}</span>
               <input *ngIf="isEdit"
-                (focusout)="isEdit=false; update(todos[i].id, todos[i].title)"
+                (focusout)="isEdit=false; update(todos[i])"
                 [(ngModel)]="todos[i].title"
                 id="input_text"
                 type="text"
@@ -38,12 +39,13 @@
               >
                 <i class="fa fa-trash "></i>
               </button>
-              <!-- todoのチェックをいれる用のボタン　-->
-              <button
+              <!-- todoのチェックをいれる用のボタン　[class.offbt]="!todos[i].status"は" "内がfalseの時.offbtクラスを追加するという意味-->
+              <button [class.offbt]="!todos[i].status" [class.onbt]="todos[i].status" (click)="toggleTodoStatus(todos[i])"
                 type="button"
-                class="btn btn-success btn-circle
-                pull-right deletebtn"
+                class="btn
+                pull-right"
               >
+                <span >{{"DONE"}}</span>
               </button>
 
            </div>
@@ -51,3 +53,4 @@
       </div>
     </div>
 </div>
+</body>

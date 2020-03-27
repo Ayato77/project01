@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ToDo';
-  subtitle = 'Angular9 + Django Rest Framework'
+  title = 'Simple Todo';
+  subtitle = ''
 }
 
