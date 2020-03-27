@@ -3,7 +3,7 @@
 <div class="container">
   <div class="center">
     <div class="row">
-      <div class="col-sm-8 col-sm-offset-2">
+      <div class="col-sm-8 col-sm-offset-2 mx-auto">
         <!--入力フォームの内容とtodo.titleを同期-->
         <input [(ngModel)]="todo.title"
           id="input_text1"
@@ -18,8 +18,8 @@
     </div>
   </div>
   <hr class="col-sm-8 col-sm-offset-2">
-    <div class="todo-list row center">
-      <div *ngFor="let todo of todos;let i=index;trackBy: myTrackBy" class="col-sm-8 col-sm-offset-2">
+    <div class="todo-list row ">
+      <div *ngFor="let todo of todos;let i=index;trackBy: myTrackBy" class="col-sm-8 col-sm-offset-2 mx-auto">
 
          <div class="card">
             <div class="card-body">
