@@ -49,11 +49,13 @@ export class TodoListComponent implements OnInit {
   }
 
   // todoを更新した時の動作
-  update(id: number, title: string): void {
-    let todo = {
-      id: id,
-      title: title
-    }
+  update(todo: Todo): void {
+    this.todoService.updateTodo(todo).subscribe();
+  }
+
+  // Toggle todo status
+  toggleTodoStatus(todo: Todo) {
+    todo.status = !todo.status;
     this.todoService.updateTodo(todo).subscribe();
   }
 //TrackByを使って、*ngForで再度ロードされるhtmlを少なくする。

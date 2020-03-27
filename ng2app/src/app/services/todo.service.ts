@@ -37,7 +37,8 @@ export class TodoService {
   }
 
   updateTodo(todo: Todo): Observable<any>{
-    return this.http.put(this.host, todo, {headers: this.headers})
+    const url = `${this.host}${todo.id}/`;
+    return this.http.put(url, todo, {headers: this.headers})
       .pipe(catchError(this.handleError));
   }
 
