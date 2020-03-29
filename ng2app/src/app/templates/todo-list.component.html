@@ -17,6 +17,10 @@
       </div>
     </div>
   </div>
+
+
+
+
   <hr class="col-sm-8 col-sm-offset-2">
     <div class="todo-list row ">
       <div *ngFor="let todo of todos;let i=index;trackBy: myTrackBy" class="col-sm-8 col-sm-offset-2 mx-auto">
@@ -50,6 +54,10 @@
 
            </div>
         </div>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <button class="deletetodos" (click)="resetTodo()">Reset Todo List</button>
+        <button class="deletetodos" (click)="deleteDoneItems()">Delete Done Items</button>
       </div>
     </div>
 </div>

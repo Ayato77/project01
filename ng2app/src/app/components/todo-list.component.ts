@@ -48,6 +48,22 @@ export class TodoListComponent implements OnInit {
     this.todos=[];
     this.todos = this.updatedtodos.concat();
   }
+  //完了したアイテムのみを削除
+  deleteDoneItems(){
+    for(let item of this.todos.filter(elm => {return elm.status})){
+      this.delete(item);
+    }
+  }
+  //リストを全削除
+  resetTodo(){
+    const conf = window.confirm('Do you really want to reset the list?');
+    if(conf){
+      for(let item of this.todos){
+      this.delete(item);
+    }
+    this.todos = [];
+    }
+  }
 
   // todoを更新した時の動作
   update(todo: Todo): void {
