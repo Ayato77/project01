@@ -16,6 +16,7 @@ export class TodoListComponent implements OnInit {
   @Input() todo: Todo = new Todo();
   @Input() isEdit = false;
   @Input() hideElement = false;
+  btnText = '';
 
   constructor(
     private todoService: TodoService,
@@ -57,6 +58,15 @@ export class TodoListComponent implements OnInit {
   toggleTodoStatus(todo: Todo) {
     todo.status = !todo.status;
     this.todoService.updateTodo(todo).subscribe();
+  }
+
+  getBtnText(todo: Todo){
+    if(todo.status){
+      return ' DONE ';
+    }
+    else{
+      return 'unfinished';
+    }
   }
 //TrackByを使って、*ngForで再度ロードされるhtmlを少なくする。
   myTrackBy(index: number, obj: any): any {

@@ -40,12 +40,12 @@
                 <i class="fa fa-trash "></i>
               </button>
               <!-- todoのチェックをいれる用のボタン　[class.offbt]="!todos[i].status"は" "内がfalseの時.offbtクラスを追加するという意味-->
-              <button [class.offbt]="!todos[i].status" [class.onbt]="todos[i].status" (click)="toggleTodoStatus(todos[i])"
+              <button [innerText]=getBtnText(todos[i]) [class.offbt]="!todos[i].status" [class.onbt]="todos[i].status" (click)="toggleTodoStatus(todos[i]); getBtnText(todos[i])"
                 type="button"
                 class="btn
                 pull-right"
               >
-                <span >{{"DONE"}}</span>
+
               </button>
 
            </div>
