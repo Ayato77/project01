@@ -16,6 +16,7 @@ export class TodoListComponent implements OnInit {
   @Input() todo: Todo = new Todo();
   @Input() isEdit = false;
   @Input() hideElement = false;
+  btnText = '';
 
   constructor(
     private todoService: TodoService,
@@ -47,6 +48,22 @@ export class TodoListComponent implements OnInit {
     this.todos=[];
     this.todos = this.updatedtodos.concat();
   }
+  //完了したアイテムのみを削除
+  deleteDoneItems(){
+    for(let item of this.todos.filter(elm => {return elm.status})){
+      this.delete(item);
+    }
+  }
+  //リストを全削除
+  resetTodo(){
+    const conf = window.confirm('Do you really want to reset the list?');
+    if(conf){
+      for(let item of this.todos){
+      this.delete(item);
+    }
+    this.todos = [];
+    }
+  }
 
   // todoを更新した時の動作
   update(todo: Todo): void {
@@ -57,6 +74,15 @@ export class TodoListComponent implements OnInit {
   toggleTodoStatus(todo: Todo) {
     todo.status = !todo.status;
     this.todoService.updateTodo(todo).subscribe();
+  }
+
+  getBtnText(todo: Todo){
+    if(todo.status){
+      return ' DONE ';
+    }
+    else{
+      return 'unfinished';
+    }
   }
 //TrackByを使って、*ngForで再度ロードされるhtmlを少なくする。
   myTrackBy(index: number, obj: any): any {
