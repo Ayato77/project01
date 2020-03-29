@@ -83,3 +83,20 @@ outline: none;
   font-family: 'Noto Serif JP', sans-serif;
   font-size: large;
 }
+
+.deletetodos{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: darkgrey;
+  border: solid 2px darkgrey;
+  border-radius: 3px;
+  transition: .4s;
+  float: right;
+
+}
+.deletetodos:hover {
+  background: red;
+  color: white;
+  border: solid 2px red;
+}
