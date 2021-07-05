@@ -21,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~9.0.7",
     "@angular/router": "~9.0.7",
     "bootstrap": "^4.4.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "minimist": "^1.2.5",
     "ng2-bootstrap": "^1.6.3",
     "rxjs": "~6.5.4",
